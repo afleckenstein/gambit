@@ -2393,6 +2393,14 @@
 (define (univ-emit-cons-inline ctx expr1 expr2)
   (^new 'pair expr1 expr2))
 
+(define (univ-emit-xcons ctx expr1 expr2)
+  (if (univ-compactness>=? ctx 9)
+      (^call-prim (^rts-method-use 'xcons) expr1 expr2)
+      (univ-emit-xcons-inline ctx expr1 expr2)))
+
+(define (univ-emit-xcons-inline ctx expr1 expr2)
+  (^new 'pair expr2 expr1))
+
 (define (univ-emit-getcar ctx expr)
   (^field 'car (^cast* 'pair expr)))
 

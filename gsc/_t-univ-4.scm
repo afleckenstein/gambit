@@ -1371,6 +1371,11 @@
    (lambda (ctx return arg1 arg2)
      (return (^cons arg1 arg2)))))
 
+(univ-define-prim "##xcons" #t
+  (make-translated-operand-generator
+   (lambda (ctx return arg1 arg2)
+     (return (^xcons arg1 arg2)))))
+
 (univ-define-prim "##set-car!" #f
   (make-translated-operand-generator
    (lambda (ctx return arg1 arg2)

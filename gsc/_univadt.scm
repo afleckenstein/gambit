@@ -604,6 +604,9 @@
 (define-macro (^cons expr1 expr2)
   `(univ-emit-cons ctx ,expr1 ,expr2))
 
+(define-macro (^xcons expr1 expr2)
+  `(univ-emit-xcons ctx ,expr1 ,expr2))
+
 (define-macro (^getcar expr)
   `(univ-emit-getcar ctx ,expr))
 
